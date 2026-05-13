@@ -16,6 +16,7 @@ help:
 	@echo "  all       Run check and test"
 
 deps:
+	uv python install
 	uv sync
 
 check:
