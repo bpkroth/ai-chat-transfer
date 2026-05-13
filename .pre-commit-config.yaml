@@ -1,12 +1,9 @@
 repos:
-- repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.4.4
+- repo: local
   hooks:
-    - id: ruff
-      args: [ --fix ]
-    - id: ruff-format
-- repo: https://github.com/astral-sh/ty-pre-commit
-  rev: v0.0.35
-  hooks:
-    - id: ty
-      files: ^src/
+    - id: make-check
+      name: make check
+      entry: make check
+      language: system
+      pass_filenames: false
+      always_run: true
