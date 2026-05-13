@@ -23,3 +23,4 @@ This repository contains tools for migrating chat history between various AI age
 - All Python code must pass `make check` (Ruff, Pylint, Ty) with a 10.0/10 score.
   - Use pre-commit hooks to check for that.
 - Unit tests are required for all new extractors and injectors.
+- Use absolute commit SHAs with a comment about their version for Github Actions workflow definitions.
