@@ -1,5 +1,7 @@
 from datetime import datetime
-from chat_bridge.models import Message, ChatHistory, ExportData
+
+from chat_bridge.models import ChatHistory, ExportData, Message
+
 
 def test_message_creation():
     msg = Message(role="user", content="Hello")
@@ -8,6 +10,7 @@ def test_message_creation():
     assert msg.timestamp is None
     assert msg.metadata == {}
 
+
 def test_chat_history_creation():
     msg = Message(role="assistant", content="Hi there")
     chat = ChatHistory(messages=[msg], source="test", created_at=datetime.now())
@@ -15,11 +18,12 @@ def test_chat_history_creation():
     assert chat.source == "test"
     assert chat.messages[0].content == "Hi there"
 
+
 def test_export_data_serialization():
     msg = Message(role="user", content="Test")
     chat = ChatHistory(messages=[msg], source="test", created_at=datetime.now())
     export = ExportData(chats=[chat])
-    
+
     json_data = export.model_dump_json()
     assert "test" in json_data
     assert "Test" in json_data

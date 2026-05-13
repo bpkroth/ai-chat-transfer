@@ -10,6 +10,7 @@ from chat_bridge.core import Bridge
 def main() -> None:
     """Chat Bridge: Migrate chat history between AI agents."""
 
+
 @main.command()
 @click.option(
     "--from", "source", required=True, help="Source agent (e.g., gemini, claude)."
