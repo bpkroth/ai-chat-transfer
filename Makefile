@@ -7,12 +7,16 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
+	@echo "  deps      Install dependencies using uv"
 	@echo "  check     Run linting (ruff, pylint) and type checking (ty)"
 	@echo "  test      Run unit tests (pytest)"
 	@echo "  package   Build the wheel and source distribution"
 	@echo "  install   Install the tool locally using uv"
 	@echo "  clean     Remove build artifacts and cache files"
 	@echo "  all       Run check and test"
+
+deps:
+	uv sync
 
 check:
 	uv run ruff check .
