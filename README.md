@@ -81,50 +81,10 @@ gh gist create export.json --public=false
 gh gist view <gist-id> > export.json
 ```
 
-## Development
+## Contributing and Releases
 
-### Setup
-
-```bash
-uv sync
-# Or using make (also installs pre-commit hooks)
-make deps
-```
-
-### Pre-commit Hooks
-
-Git hooks are automatically installed via `make deps`. To install them manually:
-
-```bash
-uv run pre-commit install
-```
-
-### Running Tests
-
-```bash
-uv run pytest
-# Or using make
-make test
-```
-
-### Linting, Formatting & Type Checking
-
-```bash
-# Individual commands
-uv run ruff check .
-uv run ruff format .
-uv run ty check src
-uv run pylint src/chat_bridge
-
-# Run all checks via make
-make check
-```
-
-### All-in-one
-
-```bash
-make all
-```
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, checks, tests, and
+PyPI release instructions.
 
 ## License
 
