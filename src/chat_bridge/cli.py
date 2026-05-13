@@ -38,8 +38,11 @@ def migrate(
     bridge = Bridge(dry_run=dry_run)
     try:
         bridge.run(source, input_file, target, output_file)
-    except Exception as e:
+    except (ValueError, FileNotFoundError, PermissionError) as e:
         click.echo(f"Error: {e}", err=True)
+        sys.exit(1)
+    except Exception as e:  # pylint: disable=broad-exception-caught
+        click.echo(f"An unexpected error occurred: {e}", err=True)
         sys.exit(1)
 
 
