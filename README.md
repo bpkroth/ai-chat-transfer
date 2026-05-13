@@ -49,6 +49,26 @@ chat-bridge migrate --from gemini --input takeout.json --title "Project Alpha" -
 chat-bridge migrate --from gemini --input takeout.json --dry-run
 ```
 
+## Transferring Exports
+
+If you need to move export files between machines (e.g., from a local download to a remote dev environment):
+
+### Using SCP (Secure Copy)
+```bash
+# Copy export to a remote server
+scp export.json user@remote-host:/path/to/destination/
+```
+
+### Using GitHub Gists
+If you have the [GitHub CLI (`gh`)](https://cli.github.com/) installed, Gists are a convenient temporary buffer:
+```bash
+# Create a secret gist from your export
+gh gist create export.json --public=false
+
+# Download the gist on the target machine
+gh gist view <gist-id> > export.json
+```
+
 ## Development
 
 ### Setup
