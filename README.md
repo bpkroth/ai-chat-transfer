@@ -32,6 +32,18 @@ chat-bridge migrate --from gemini --input takeout.json --to markdown --output su
 chat-bridge migrate --from claude --input claude_export.json --to json --output history.json
 ```
 
+### Migrate a Specific Chat Session
+If your export contains many chats, you can migrate a single one by its title:
+```bash
+chat-bridge migrate --from gemini --input takeout.json --title "Project Alpha" --to markdown
+```
+
+> **Tip: Naming Sessions**
+> Most agents allow you to explicitly name a session to make it easier to find:
+> - **Gemini:** Click the three dots next to a chat in the sidebar and select **Rename**.
+> - **Claude:** Click the chat title at the top of the screen to edit it, or use the sidebar menu.
+> - **General:** If the agent supports it, sending a message like `/rename My New Title` sometimes works (agent dependent).
+
 ### Dry Run
 ```bash
 chat-bridge migrate --from gemini --input takeout.json --dry-run
