@@ -7,7 +7,7 @@ help:
 	@echo "Usage: make [target]"
 	@echo ""
 	@echo "Targets:"
-	@echo "  deps      Install dependencies using uv"
+	@echo "  deps      Install dependencies and pre-commit hooks using uv"
 	@echo "  check     Run linting (ruff, pylint) and type checking (ty)"
 	@echo "  test      Run unit tests (pytest)"
 	@echo "  package   Build the wheel and source distribution"
@@ -18,6 +18,7 @@ help:
 deps:
 	uv python install
 	uv sync
+	uv run pre-commit install
 
 check: deps
 	uv run ruff check .
