@@ -43,7 +43,8 @@ select = ["E", "F", "I", "N", "UP", "B", "C4", "SIM", "PTH"]
 
 [tool.ty]
 # Configuration for ty
-# analysis = { "strict" = true }
+# analysis = { "respect-type-ignore-comments" = true }
+
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

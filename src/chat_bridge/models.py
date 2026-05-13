@@ -1,3 +1,5 @@
+"""Data models for chat history migration."""
+
 from datetime import datetime
 from typing import Any
 

@@ -1,3 +1,5 @@
+"""Command line interface for the chat-bridge tool."""
+
 import sys
 
 import click

@@ -1,3 +1,5 @@
+"""Core logic and base classes for chat history migration."""
+
 import importlib
 from abc import ABC, abstractmethod
 from pathlib import Path
