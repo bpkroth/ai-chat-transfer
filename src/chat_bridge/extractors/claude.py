@@ -18,8 +18,16 @@ class ClaudeExtractor(BaseExtractor):
             raw_data = json.load(f)
 
         chats = []
-        # Claude exports are typically a list of conversation objects
-        for conv in raw_data:
+        # Claude exports are typically a list of conversation objects,
+        # but handle a single conversation object as well.
+        if isinstance(raw_data, dict):
+            conversations = [raw_data]
+        elif isinstance(raw_data, list):
+            conversations = raw_data
+        else:
+            raise ValueError(f"Unexpected Claude data format: {type(raw_data)}")
+
+        for conv in conversations:
             messages = []
             for msg in conv.get("chat_messages", []):
                 role = "user" if msg.get("sender") == "human" else "assistant"

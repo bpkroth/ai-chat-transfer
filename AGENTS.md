@@ -8,8 +8,8 @@ This repository contains tools for migrating chat history between various AI age
 - **Formatting:** Standardize on OpenAI-compatible JSON for internal representation and Markdown for human-readable summaries.
 
 ## Supported Agents
-- **Gemini:** Use Google Takeout to export JSON history.
-- **Claude:** Use the built-in "Export Data" feature to get JSON history.
+- **Gemini:** Use Google Takeout for bulk exports or a single chat JSON object.
+- **Claude:** Use the "Export Data" feature for bulk exports or a single chat JSON object.
 - **Codex/Copilot:** (Research in progress for local storage locations).
 
 ## Migration Workflow

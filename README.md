@@ -3,7 +3,7 @@
 A Python CLI tool to migrate chat history between various AI agents (Gemini, Claude, etc.).
 
 ## Features
-- **Extractors:** Parse exports from Gemini (Google Takeout) and Claude (Anthropic JSON).
+- **Extractors:** Parse bulk exports or individual chat sessions from Gemini (Google Takeout) and Claude (Anthropic JSON).
 - **Injectors:** Output to high-fidelity Markdown (for "seeding" new chats) or common JSON.
 - **Type-Safe:** Built with Pydantic and fully type-checked with **ty** (Rust-based).
 - **Robust:** Modular architecture, unit-tested with Pytest.
