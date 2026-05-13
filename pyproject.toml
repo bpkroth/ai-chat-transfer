@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "A tool to migrate chat history between various AI agents."
 readme = "README.md"
 authors = [
-    { name = "Brian Kroth", email = "bpkroth@sema4.ai" }
+    { name = "Brian Kroth", email = "bpkroth@gmail.com" }
 ]
 requires-python = ">=3.11"
 dependencies = [
