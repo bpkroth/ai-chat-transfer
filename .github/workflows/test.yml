@@ -28,7 +28,9 @@ jobs:
           ${{ runner.os }}-uv-
     - name: Install dependencies
       run: make deps
-    - name: Run checks
+    - name: Run pre-commit run -a
       run: make check
+    - name: Verify pre-commit did not change files
+      run: git diff --exit-code
     - name: Run tests
       run: make test
