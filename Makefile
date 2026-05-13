@@ -19,16 +19,16 @@ deps:
 	uv python install
 	uv sync
 
-check:
+check: deps
 	uv run ruff check .
 	uv run ruff format --check .
 	uv run pylint src/chat_bridge
 	uv run ty check src
 
-test:
+test: deps
 	uv run pytest
 
-package:
+package: deps
 	uv build
 
 install:
