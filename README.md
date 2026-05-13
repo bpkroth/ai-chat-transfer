@@ -1,6 +1,6 @@
 # Chat Bridge
 
-A well-crafted Python CLI tool to migrate chat history between various AI agents (Gemini, Claude, etc.).
+A Python CLI tool to migrate chat history between various AI agents (Gemini, Claude, etc.).
 
 ## Features
 - **Extractors:** Parse exports from Gemini (Google Takeout) and Claude (Anthropic JSON).
