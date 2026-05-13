@@ -19,7 +19,7 @@ This repository contains tools for migrating chat history between various AI age
 4. Paste the summary into a new chat with the target agent to "seed" the context.
 
 ## Local Conventions
-- Make smaller commits for each change.
+- Make smaller commits for each change on the current branch.
 - All Python code must pass `make check` (Ruff, Pylint, Ty) with a 10.0/10 score.
   - Use pre-commit hooks to check for that.
 - Unit tests are required for all new extractors and injectors.
