@@ -22,4 +22,4 @@ jobs:
     - name: Run lint
       run: uv run ruff check .
     - name: Run type check
-      run: uv run mypy src
+      run: uv run ty check src

@@ -5,7 +5,7 @@ A well-crafted Python CLI tool to migrate chat history between various AI agents
 ## Features
 - **Extractors:** Parse exports from Gemini (Google Takeout) and Claude (Anthropic JSON).
 - **Injectors:** Output to high-fidelity Markdown (for "seeding" new chats) or common JSON.
-- **Type-Safe:** Built with Pydantic and fully type-checked with Mypy.
+- **Type-Safe:** Built with Pydantic and fully type-checked with **ty** (Rust-based).
 - **Robust:** Modular architecture, unit-tested with Pytest.
 
 ## Installation
@@ -52,7 +52,7 @@ uv run pytest
 ### Linting & Formatting
 ```bash
 uv run ruff check .
-uv run mypy src
+uv run ty check src
 ```
 
 ## License

@@ -24,10 +24,10 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
-    "mypy>=2.1.0",
     "pylint>=4.0.5",
     "pytest>=9.0.3",
     "ruff>=0.15.12",
+    "ty>=0.0.35",
 ]
 
 [tool.hatch.build.targets.wheel]
@@ -43,10 +43,9 @@ select = ["E", "F", "I", "N", "UP", "B", "C4", "SIM", "PTH"]
 [tool.pylint.messages_control]
 disable = ["C0114", "C0115", "C0116"]
 
-[tool.mypy]
-python_version = "3.11"
-strict = true
-ignore_missing_imports = true
+[tool.ty]
+# Configuration for ty
+# analysis = { "strict" = true }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
