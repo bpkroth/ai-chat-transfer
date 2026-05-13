@@ -15,6 +15,7 @@ class BaseExtractor(ABC):
         """Extract chat history from the given path."""
 
     def __repr__(self) -> str:
+        """Return string representation."""
         return f"{self.__class__.__name__}()"
 
 
@@ -26,13 +27,19 @@ class BaseInjector(ABC):
         """Inject chat history into the target format/agent."""
 
     def __repr__(self) -> str:
+        """Return string representation."""
         return f"{self.__class__.__name__}()"
 
 
 class Bridge:
     """Main orchestrator for migrating chat history."""
 
-    def __init__(self, dry_run: bool = False):
+    def __init__(self, dry_run: bool = False) -> None:
+        """Initialize the bridge.
+
+        Args:
+            dry_run: Whether to perform a dry run.
+        """
         self.dry_run = dry_run
         self.extractors: dict[str, type[BaseExtractor]] = {}
         self.injectors: dict[str, type[BaseInjector]] = {}

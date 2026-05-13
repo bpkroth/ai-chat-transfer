@@ -1,12 +1,19 @@
+"""Injector for Markdown format."""
+
 import sys
 from pathlib import Path
 
 from chat_bridge.core import BaseInjector
 from chat_bridge.models import ExportData
 
+DRY_RUN_PREVIEW_LIMIT = 500
+
 
 class MarkdownInjector(BaseInjector):
+    """Injector that serializes chat history to Markdown."""
+
     def inject(self, data: ExportData, output_path: Path | None, dry_run: bool) -> None:
+        """Inject chat history into a Markdown file or stdout."""
         output = []
         output.append("# Chat History Summary\n")
         output.append(f"Exported at: {data.exported_at}\n")
@@ -25,7 +32,10 @@ class MarkdownInjector(BaseInjector):
 
         if dry_run:
             print("--- DRY RUN: Markdown Output ---")
-            print(final_text[:500] + "..." if len(final_text) > 500 else final_text)
+            if len(final_text) > DRY_RUN_PREVIEW_LIMIT:
+                print(f"{final_text[:DRY_RUN_PREVIEW_LIMIT]}...")
+            else:
+                print(final_text)
             return
 
         if output_path:

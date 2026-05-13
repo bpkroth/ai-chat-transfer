@@ -1,3 +1,5 @@
+"""Extractor for Gemini chat history."""
+
 import json
 from contextlib import suppress
 from datetime import datetime
@@ -8,7 +10,10 @@ from chat_bridge.models import ChatHistory, ExportData, Message
 
 
 class GeminiExtractor(BaseExtractor):
+    """Extractor for Gemini Google Takeout files."""
+
     def extract(self, input_path: Path) -> ExportData:
+        """Extract chat history from a Gemini JSON file."""
         with input_path.open(encoding="utf-8") as f:
             raw_data = json.load(f)
 
