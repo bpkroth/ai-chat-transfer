@@ -18,12 +18,22 @@ class GeminiExtractor(BaseExtractor):
             raw_data = json.load(f)
 
         chats = []
-        # Google Takeout for Gemini is often a list of chat objects
-        # Structure varies, but usually it's a list or a dict with a 'conversations' key
+        # Google Takeout for Gemini is often a list of chat objects.
+        # Structure varies, but usually it's a list or a dict with a
+        # 'conversations' key. We also handle a single chat object directly.
         if isinstance(raw_data, list):
             conversations = raw_data
+        elif isinstance(raw_data, dict):
+            if "conversations" in raw_data:
+                conversations = raw_data["conversations"]
+            elif "messages" in raw_data:
+                # Likely a single chat object
+                conversations = [raw_data]
+            else:
+                # Empty or unknown structure
+                conversations = []
         else:
-            conversations = raw_data.get("conversations", [])
+            raise ValueError(f"Unexpected Gemini data format: {type(raw_data)}")
 
         for conv in conversations:
             messages = []

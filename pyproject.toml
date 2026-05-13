@@ -57,6 +57,7 @@ select = [
 
 [tool.ruff.lint.extend-per-file-ignores]
 "tests/*" = ["D", "ANN", "PLR2004"]  # Tests don't need strict docstrings or annotations
+"src/chat_bridge/cli.py" = ["PLR0913"]  # CLI commands often have many arguments
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -71,7 +72,9 @@ testpaths = ["tests"]
 
 [tool.pylint.messages_control]
 disable = [
-    "too-few-public-methods",  # Extractors and injectors usually only have one method
+    "too-few-public-methods",       # Extractors and injectors usually only have one method
+    "too-many-arguments",           # Bridge.run and CLI commands naturally have many params
+    "too-many-positional-arguments", # Allow up to 6 positional params for run/migrate
 ]
 
 [tool.pylint.format]

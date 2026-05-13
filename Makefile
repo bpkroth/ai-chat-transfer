@@ -8,7 +8,7 @@ help:
 	@echo ""
 	@echo "Targets:"
 	@echo "  deps      Install dependencies and pre-commit hooks using uv"
-	@echo "  check     Run linting (ruff, pylint) and type checking (ty)"
+	@echo "  check     Run pre-commit checks against all files"
 	@echo "  test      Run unit tests (pytest)"
 	@echo "  package   Build the wheel and source distribution"
 	@echo "  install   Install the tool locally using uv"
@@ -21,10 +21,7 @@ deps:
 	uv run pre-commit install
 
 check: deps
-	uv run ruff check .
-	uv run ruff format --check .
-	uv run pylint src/chat_bridge
-	uv run ty check src
+	uv run pre-commit run -a
 
 test: deps
 	uv run pytest

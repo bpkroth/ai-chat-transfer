@@ -31,15 +31,27 @@ def main() -> None:
     "--to", "target", default="markdown", help="Target format (e.g., markdown, json)."
 )
 @click.option(
+    "--title",
+    help=(
+        "Filter for a specific chat session by title. "
+        "Use agent commands (like /rename) to set titles before exporting."
+    ),
+)
+@click.option(
     "--dry-run", is_flag=True, help="Show what would be done without writing."
 )
-def migrate(
-    source: str, input_file: str, output_file: str | None, target: str, dry_run: bool
+def migrate(  # pylint: disable=too-many-arguments
+    source: str,
+    input_file: str,
+    output_file: str | None,
+    target: str,
+    title: str | None,
+    dry_run: bool,
 ) -> None:
     """Migrate chat history from one agent to another."""
     bridge = Bridge(dry_run=dry_run)
     try:
-        bridge.run(source, input_file, target, output_file)
+        bridge.run(source, input_file, target, output_file, title=title)
     except (ValueError, FileNotFoundError, PermissionError) as e:
         click.echo(f"Error: {e}", err=True)
         sys.exit(1)

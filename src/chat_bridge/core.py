@@ -78,9 +78,22 @@ class Bridge:
         return sorted(self.injectors.keys())
 
     def run(
-        self, source: str, input_file: str, target: str, output_file: str | None
+        self,
+        source: str,
+        input_file: str,
+        target: str,
+        output_file: str | None,
+        title: str | None = None,
     ) -> None:
-        """Execute the migration from source to target."""
+        """Execute the migration from source to target.
+
+        Args:
+            source: The source agent name.
+            input_file: Path to the input export file.
+            target: The target format name.
+            output_file: Path to the output file.
+            title: Optional title to filter for a specific chat session.
+        """
         if source not in self.extractors:
             raise ValueError(f"Unsupported source: {source}")
         if target not in self.injectors:
@@ -93,4 +106,14 @@ class Bridge:
         output_path = Path(output_file) if output_file else None
 
         data = extractor.extract(input_path)
+
+        if title:
+            filtered_chats = [c for c in data.chats if c.title == title]
+            if not filtered_chats:
+                available = [c.title for c in data.chats if c.title]
+                raise ValueError(
+                    f"No chat found with title: '{title}'. Available: {available}"
+                )
+            data.chats = filtered_chats
+
         injector.inject(data, output_path, self.dry_run)

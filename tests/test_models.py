@@ -1,9 +1,12 @@
+"""Unit tests for the data models."""
+
 from datetime import datetime
 
 from chat_bridge.models import ChatHistory, ExportData, Message
 
 
 def test_message_creation():
+    """Test the creation of a Message object."""
     msg = Message(role="user", content="Hello")
     assert msg.role == "user"
     assert msg.content == "Hello"
@@ -12,6 +15,7 @@ def test_message_creation():
 
 
 def test_chat_history_creation():
+    """Test the creation of a ChatHistory object."""
     msg = Message(role="assistant", content="Hi there")
     chat = ChatHistory(messages=[msg], source="test", created_at=datetime.now())
     assert len(chat.messages) == 1
@@ -20,6 +24,7 @@ def test_chat_history_creation():
 
 
 def test_export_data_serialization():
+    """Test the serialization of ExportData to JSON."""
     msg = Message(role="user", content="Test")
     chat = ChatHistory(messages=[msg], source="test", created_at=datetime.now())
     export = ExportData(chats=[chat])
